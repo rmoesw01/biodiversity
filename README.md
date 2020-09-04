@@ -11,7 +11,7 @@
 ## Visualizations
 * Demographic Info Table - displays the demographic information for the chosen sample.
 
-    ![Demographic Info Table](demographic.gif)
+    ![Demographic Info Table](Images/demographic.gif)
 * Horizontal Bar Chart - displays top 10 bacteria present in the sample and the amount of that bacteria (hovering over the bar displays the name and amount of the bacteria).
 
     ![Horizontal Bar Chart](Images/TopTen.gif)
