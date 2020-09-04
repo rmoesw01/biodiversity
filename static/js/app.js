@@ -1,3 +1,4 @@
+// Load the dropdown list with the available data sets
 d3.json("samples.json").then((data) => {
     var names = data.names;
     d3.select('#selDataset').selectAll('option').data(names).enter().append('option').text(function (data) {
@@ -5,8 +6,9 @@ d3.json("samples.json").then((data) => {
     });
 });
 
+// this runs when the user selects a value from the dropdown list
 function optionChanged(value) {
-    console.log(value);
+    // grab the sample values
     d3.json("samples.json").then((data) => {
         var samp_val = data.samples;
 
@@ -15,6 +17,7 @@ function optionChanged(value) {
         var otuLabels = [];
         var otuIdsString = [];
 
+        // loop through the samples to find the one that matches the user chosen value
         samp_val.forEach(person => {
             if (person.id === value) {
                 sampleValues = person.sample_values;
@@ -26,12 +29,12 @@ function optionChanged(value) {
             }
         });
 
+        // pull the metadata and populate the Demographics table
         var wash = 0;
         var Metadata=data.metadata;
         Metadata.forEach(person => {
             if (person.id ==value){
                 var demographics = Object.entries(person);
-                console.log(`in if: ${demographics}`);
                 wash = demographics[6][1];
                 d3.selectAll('p').remove();
                 d3.select('#sample-metadata').selectAll('p').data(demographics).enter().append('p').text(d=>{
@@ -39,29 +42,16 @@ function optionChanged(value) {
                 });
             }
         }); 
-        console.log(wash);
 
-        // var gaugeTrace = {
-        //     value: wash,
-        //     type: 'indicator',
-        //     mode: 'gauge+number+needle',
-        //     domain: {
-        //         x: [0,1],
-        //         y: [0,1]
-        //     }
-            // gauge: {
-            //     axis: {range: [null, 9]},
-            //     steps: [
-            //         range
-            //     ]
-            // }
-        // }
+        // ***********************************************
+        // Create the Gauge chart displaying the wash data
+        // ***********************************************
         var traceGauge = {
             type: 'pie',
             showlegend: false,
             hole: 0.4,
             rotation: 90,
-            values: [ 81/9, 81/9, 81/9, 81/9, 81/9, 81/9, 81/9, 81/9, 81/9, 81],
+            values: [ 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50],
             text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
             direction: 'clockwise',
             textinfo: 'text',
@@ -75,7 +65,7 @@ function optionChanged(value) {
       
           // needle
           var degrees = (180/9) * wash
-          var radius = 0.6
+          var radius = 0.5
           var radians = degrees * Math.PI / 180
           var x = -1 * radius * Math.cos(radians)
           var y = radius * Math.sin(radians)
@@ -98,17 +88,12 @@ function optionChanged(value) {
           }
       
           var dataGauge = [traceGauge]
-        // gaugeData = [gaugeTrace];
 
-        // var gaugeLayout = {
-        //     width: 600, 
-        //     height: 500
-        //     // margin: { t: 0, b: 0 }
-        // }
+          Plotly.newPlot('gauge', dataGauge, gaugeLayout);
 
-        // Plotly.newPlot('gauge', gaugeData, gaugeLayout);
-        Plotly.newPlot('gauge', dataGauge, gaugeLayout);
-
+        // ***********************************************************
+        // Create the horizontal bar chart with the chosen sample data
+        // ***********************************************************
         var trace1 = {
             x: sampleValues.slice(0, 10).reverse(),
             y: otuIdsString.slice(0, 10).reverse(),
@@ -124,7 +109,9 @@ function optionChanged(value) {
 
         Plotly.newPlot('bar', data1, layout);
 
-        // Bubble Plot
+        // **********************
+        // Create the Bubble Plot
+        // **********************
         var trace2 = {
             x: otuIds,
             y: sampleValues,
