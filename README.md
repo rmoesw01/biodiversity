@@ -11,13 +11,13 @@
 ## Visualizations
 * Demographic Info Table - displays the demographic information for the chosen sample.
 
-    ![Demographic Info Table](demographic.png)
+    ![Demographic Info Table](demographic.gif)
 * Horizontal Bar Chart - displays top 10 bacteria present in the sample and the amount of that bacteria (hovering over the bar displays the name and amount of the bacteria).
 
-    ![Horizontal Bar Chart](Images/TopTen.png)
+    ![Horizontal Bar Chart](Images/TopTen.gif)
 * Gauge Chart - the needle indicates the frequency that the sample subject washes the belly button.
 
-    ![Gauge Chart](Images/GaugeChart.png)    
+    ![Gauge Chart](Images/GaugeChart.gif)    
 * Bubble Chart - displays all bacteria present in the sample, the height and size of the bubble are based on the amount of that bacteria in the sample (hovering over the bubble displays the name and amount of the bacteria).
 
     ![Bubble Chart](Images/Bubble.gif)
