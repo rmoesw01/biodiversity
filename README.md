@@ -3,7 +3,6 @@
 
 ## Programming Languages
 * HTML - display platform
-* CSS - formatting for the display platform
 * JavaScript - allows for dynamic selection from multiple data samples
 
 ## Data
