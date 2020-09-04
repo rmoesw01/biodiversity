@@ -20,4 +20,4 @@
     ![Gauge Chart](Images/GaugeChart.png)    
 * Bubble Chart - displays all bacteria present in the sample, the height and size of the bubble are based on the amount of that bacteria in the sample (hovering over the bubble displays the name and amount of the bacteria).
 
-    ![Bubble Chart](Images/Bubble.png)
+    ![Bubble Chart](Images/Bubble.gif)
