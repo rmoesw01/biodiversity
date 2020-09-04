@@ -82,7 +82,7 @@ function optionChanged(value) {
                 width: 3
               }
             }],
-            title: 'Chart',
+            title: 'Wash Frequency Chart',
             xaxis: {visible: false, range: [-1, 1]},
             yaxis: {visible: false, range: [-1, 1]}
           }
@@ -104,7 +104,7 @@ function optionChanged(value) {
         var data1 = [trace1];
 
         var layout = {
-
+            title: 'Top Ten Bacteria Present'
         }
 
         Plotly.newPlot('bar', data1, layout);
@@ -127,7 +127,8 @@ function optionChanged(value) {
             xaxis: {
                 title: 'OTU IDs'
             },
-            showlegend: false
+            showlegend: false,
+            title: "All Bacteria Present"
         }
 
         Plotly.newPlot('bubble', data2, layout2);
